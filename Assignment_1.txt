@@ -1,0 +1,109 @@
+using System;
+
+namespace MyProgram
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            avgsum();
+            holiday();
+            desc();
+            primeno();
+        }
+
+
+        private static void avgsum()
+        {
+            double number1, number2;
+            Console.WriteLine("Enter the first number: ");
+            number1 = Convert.ToDouble(Console.ReadLine());
+            Console.WriteLine("Enter the second number: ");
+            number2 = Convert.ToDouble(Console.ReadLine());
+            double sum = number1 + number2;
+            double avg = sum / 2;
+            Console.WriteLine("Sum = {0} and Average = {1}", sum, avg);
+        }
+
+
+        public enum days
+        {
+            Monday = 1, Tuesday = 2, Wednesday = 3, Thursday = 4, Friday = 5, Saturday = 6, Sunday = 7
+        }
+
+          private static void holiday()
+            {
+                Console.WriteLine("Enter a number in between 0 to 8");
+                int num = Convert.ToInt32(Console.ReadLine()); ;
+
+                if (num >= 6 && num <= 7)
+                {
+                    Console.WriteLine((days)num + " is holiday");
+                }
+                else if (num <= 5 && num > 0)
+                {
+                    Console.WriteLine((days)num + " is not a holiday");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid entry");
+                }
+
+            }
+
+
+        private static void desc()
+        {
+            Console.WriteLine("Enter the first number: ");
+            int num1 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the second number: ");
+            int num2 = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter the third number: ");
+            int num3 = Convert.ToInt32(Console.ReadLine());
+            int mem, high, low;
+            if (num1 > num2)
+            {
+                mem = num1;
+                low = num2;
+            }
+            else
+            {
+                mem = num2;
+                low = num1;
+            }
+            if (mem > num3)
+            {
+                high = mem;
+                if (low > num3)
+                {
+                    mem = low;
+                    low = num3;
+                }
+                else
+                {
+                    mem = num3;
+                }
+            }
+            else high = num3;
+            Console.WriteLine("Descending order:{0} {1} {2}", high, mem, low);
+        }
+
+
+
+       public static void primeno()
+        {
+            Console.WriteLine("Enter a number:");
+            int n = Convert.ToInt32(Console.ReadLine());
+            if(prime(n))
+                Console.WriteLine(n + " is a prime number");
+            else
+                Console.WriteLine(n + " is not a prime number");
+        }
+
+        public static bool prime(int number)
+        {
+            for (int i = 2; i < number; i++)
+                if (number % i == 0)
+                    return false;
+            return true;
+        }
