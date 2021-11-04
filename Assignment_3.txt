@@ -1,0 +1,180 @@
+1)Student Registration
+
+Class:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AssignmentLibrary
+{
+    public interface IStudent
+    {
+        void candidate();
+    }
+    public class EmployeeRegister : IStudent
+    {
+        public void candidate()
+        {
+            string LibCardNumber;
+            int Year;
+            string reg;
+            Console.WriteLine("Enter Library card number:");
+            LibCardNumber = Console.ReadLine();
+            Console.WriteLine("Enter the year of study:");
+            Year = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Lirary card number is: " + LibCardNumber);
+            Console.WriteLine("Year of study is: " + Year);
+            Console.WriteLine("Do you want to register as part time student ?,press y for yes and n for no");
+            reg = Console.ReadLine();
+            if (reg == "y")
+            {
+                Console.WriteLine("You are registered as part time student");
+            }
+            else if (reg == "n")
+            {
+                Console.WriteLine("You are not registered as part time student");
+            }
+        }
+    }
+}
+
+Main method:
+public class PartTimeStudent
+        {
+            public static void Main()
+            {
+                IStudent istudent;
+                istudent = new EmployeeRegister();
+                istudent.candidate();
+            }
+        }
+
+
+
+2)Bank Account
+
+Class:
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AssignmentLibrary
+{
+    interface MyBankAccount
+    {
+        public int AccountNumber { get; set; }
+        public string AccountHolderName { get; set; }
+        public int Amount { get; set; }
+        public double BalanceAmount { get; set; }
+
+        bool Deposit(int Amount);
+        bool Withdraw(int Amount);
+    }
+
+    public class SavingsAccount : MyBankAccount
+    {
+        public int AccountNumber { get; set; }
+        public string AccountHolderName { get; set; }
+        public int Amount { get; set; }
+        public double BalanceAmount { get; set; }
+        public double Interest;
+        public double MinimumBalance;
+
+        public bool Deposit(int Amount)
+        {
+            if (Amount > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public bool Withdraw(int Amount)
+        {
+            if (Amount > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public double Addinterest()
+        {
+            return Interest;
+        }
+    }
+    public class ODAccount : MyBankAccount
+    {
+        public int AccountNumber { get; set; }
+        public string AccountHolderName { get; set; }
+        public int Amount { get; set; }
+        public double BalanceAmount { get; set; }
+        public double ODInterest;
+        public double ODLimit;
+
+        public bool Deposit(int Amount)
+        {
+            if (Amount > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
+        public bool Withdraw(int Amount)
+        {
+            if (Amount > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public double AddODinterest()
+        {
+
+            return ODInterest;
+
+        }
+    }
+}
+
+Main method:
+ private static void InterfaceSample2()
+        {
+            SavingsAccount account = new SavingsAccount();
+            account.AccountHolderName = "Akshatha";
+            account.AccountNumber = 2468104;
+            account.BalanceAmount = 500;
+            account.Interest = 20;
+            account.MinimumBalance = 0;
+            Console.WriteLine(account.Deposit(500));
+            Console.WriteLine(account.Withdraw(500));
+            Console.WriteLine(account.Addinterest());
+
+            ODAccount odaccount = new ODAccount();
+            odaccount.AccountNumber = 34567;
+            odaccount.AccountHolderName = "Akshatha";
+            odaccount.AccountNumber = 2468104;
+            odaccount.BalanceAmount = 250;
+            odaccount.ODInterest = 20;
+            odaccount.ODLimit = 120;
+            Console.WriteLine(odaccount.Deposit(250));
+            Console.WriteLine(odaccount.Withdraw(-250));
+            Console.WriteLine(odaccount.AddODinterest());
+        }
